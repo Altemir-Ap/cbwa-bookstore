@@ -1,4 +1,4 @@
-const db = require('../db.js')();
+const db = require('../db')();
 const COLLECTION = 'books';
 module.exports = () => {
   const get = async (id = null) => {
