@@ -52,7 +52,7 @@
       const app = document.getElementById("book-list");
       data.forEach(item => {
         app.innerHTML += `
-        <li>${item}</li>
+        <li>${item.name}</li>
         `
       })
     }
@@ -60,7 +60,7 @@
       const app = document.getElementById("author-list");
       data.forEach(item => {
         app.innerHTML += `
-        <li>${item}</li>
+        <li>${item.name}</li>
         `
       })
     }

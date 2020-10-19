@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "start:dev": "nodemon index.js"
   },
   "author": "",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2"
   }
 }
