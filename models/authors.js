@@ -1,10 +1,14 @@
 const db = require('../db')();
 const COLLECTION = 'authors';
 module.exports = () => {
-  const get = async () => {
+  const get = async (id = null) => {
     console.log('inside authors model');
-    const authors = await db.get(COLLECTION);
-    return authors;
+    if (!id) {
+      const allAuthors = await db.get(COLLECTION);
+      return allAuthors;
+    }
+    const singleAuthor = await db.get(COLLECTION, { id });
+    return singleAuthor;
   };
   const add = async (name) => {
     const authorCount = await db.count(COLLECTION);

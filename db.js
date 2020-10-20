@@ -1,14 +1,14 @@
-const uri = "mongodb+srv://altemir:altemirap25@cluster0.v1l2p.mongodb.net/test";
+const uri = 'mongodb+srv://altemir:altemirap25@cluster0.v1l2p.mongodb.net/test';
 const MongoClient = require('mongodb').MongoClient;
-const DB_NAME = "book-store";
-const MONGO_OPTIONS = {  useUnifiedTopology: true, useNewUrlParser: true };
+const DB_NAME = 'book-store';
+const MONGO_OPTIONS = { useUnifiedTopology: true, useNewUrlParser: true };
 module.exports = () => {
-  const get = (collectionName) => {
+  const get = (collectionName, query = {}) => {
     return new Promise((resolve, reject) => {
       MongoClient.connect(uri, MONGO_OPTIONS, (err, client) => {
         const db = client.db(DB_NAME);
         const collection = db.collection(collectionName);
-        collection.find({}).toArray((err, docs) => {
+        collection.find(query).toArray((err, docs) => {
           resolve(docs);
           client.close();
         });
@@ -21,7 +21,6 @@ module.exports = () => {
       MongoClient.connect(uri, MONGO_OPTIONS, (err, client) => {
         const db = client.db(DB_NAME);
         const collection = db.collection(collectionName);
-
         collection.insertOne(item, (err, result) => {
           resolve(result);
         });

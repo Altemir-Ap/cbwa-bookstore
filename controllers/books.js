@@ -25,7 +25,7 @@ module.exports = () => {
 
   const getById = async (req, res) => {
     res.setHeader('content-type', 'application/json');
-    res.json({ error: 'byId not implemented yet' });
+    res.json(await books.get(parseInt(req.params.id)));
   };
 
   return {

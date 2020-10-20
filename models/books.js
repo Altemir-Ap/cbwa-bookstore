@@ -1,13 +1,16 @@
+const books = require('../controllers/books');
+
 const db = require('../db')();
 const COLLECTION = 'books';
 module.exports = () => {
   const get = async (id = null) => {
     console.log(' inside books model');
     if (!id) {
-      const books = await db.get(COLLECTION);
-      return books;
+      const allBooks = await db.get(COLLECTION);
+      return allBooks;
     }
-    return { error: 'byId not implemented yet' };
+    const singleBook = await db.get(COLLECTION, { id });
+    return singleBook;
   };
   const add = async (name, author) => {
     const booksCounter = await db.count(COLLECTION);
