@@ -1,4 +1,4 @@
-const uri = 'mongodb+srv://altemir:altemirap25@cluster0.v1l2p.mongodb.net/test';
+const uri = process.env.MONGO_URI;
 const MongoClient = require('mongodb').MongoClient;
 const DB_NAME = 'book-store';
 const MONGO_OPTIONS = { useUnifiedTopology: true, useNewUrlParser: true };
