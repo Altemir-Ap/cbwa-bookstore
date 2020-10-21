@@ -20,9 +20,21 @@ module.exports = () => {
     res.setHeader('Content-Type', 'application/json');
     res.json(await authors.get(parseInt(req.params.id)));
   };
+
+  const populatedController = async (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept',
+    );
+
+    res.json(await authors.aggregateWithBooks());
+  };
   return {
     getController,
     postController,
     getById,
+    populatedController,
   };
 };

@@ -28,9 +28,14 @@ module.exports = () => {
     res.json(await books.get(parseInt(req.params.id)));
   };
 
+  const populatedController = async (req, res) => {
+    res.json(await books.aggregateWithAuthors());
+  };
+
   return {
     getController,
     postController,
     getById,
+    populatedController,
   };
 };
